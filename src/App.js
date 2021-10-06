@@ -1,9 +1,9 @@
-import Title from './components/Title';
+import Feedback from './components/Feedback/Feedback';
 
 export default function App() {
   return (
     <div>
-      <Title />
+      <Feedback />
     </div>
   );
 }

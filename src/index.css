@@ -1,4 +1,4 @@
-@import-normalize;
+/* @import-normalize; */
 
 body {
   margin: 0;
@@ -14,7 +14,7 @@ code {
     monospace;
 }
 
-/* ul,
+ul,
 li,
 h2,
 p {
@@ -33,4 +33,4 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
-} */
+}
