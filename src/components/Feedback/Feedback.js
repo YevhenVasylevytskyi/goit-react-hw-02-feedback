@@ -1,5 +1,5 @@
 import React from 'react';
-import FeedbackButton from 'components/FeedbackButton';
+import FeedbackOptions from 'components/FeedbackOptions';
 import Statistic from 'components/Statistic';
 // import PropTypes from 'prop-types';
 
@@ -10,28 +10,10 @@ class Feedback extends React.Component {
     bad: 0,
   };
 
-  countGood = () => {
-    this.setState(prevState => {
-      return {
-        good: prevState.good + 1,
-      };
-    });
-  };
-
-  countNeutral = () => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-  };
-
-  countBad = () => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad + 1,
-      };
-    });
+  onLeaveFeedback = feedback => {
+    this.setState(prevState => ({
+      [feedback]: prevState[feedback] + 1,
+    }));
   };
 
   countTotalFeedback = () => {
@@ -45,15 +27,18 @@ class Feedback extends React.Component {
   };
 
   render() {
+    const keys = Object.keys(this.state);
+
     return (
       <>
         <h1>Please leave feedback</h1>
 
-        <FeedbackButton
-          onGood={this.countGood}
-          onNeutral={this.countNeutral}
-          onBad={this.countBad}
+        <FeedbackOptions
+          options={keys}
+          onLeaveFeedback={this.onLeaveFeedback}
         />
+
+        <h1>Statistics</h1>
 
         <Statistic
           good={this.state.good}
