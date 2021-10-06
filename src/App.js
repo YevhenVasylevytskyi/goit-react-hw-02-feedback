@@ -1,4 +1,4 @@
-import Feedback from './components/Feedback/Feedback';
+import Feedback from './components/Feedback';
 
 export default function App() {
   return (
