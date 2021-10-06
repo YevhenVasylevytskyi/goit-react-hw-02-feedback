@@ -1,5 +1,6 @@
 import React from 'react';
 import FeedbackButton from 'components/FeedbackButton';
+import Statistic from 'components/Statistic';
 // import PropTypes from 'prop-types';
 
 class Feedback extends React.Component {
@@ -33,15 +34,15 @@ class Feedback extends React.Component {
     });
   };
 
-  countTotalFeedback() {
+  countTotalFeedback = () => {
     return this.state.good + this.state.neutral + this.state.bad;
-  }
+  };
 
-  countPositiveFeedbackPercentage() {
+  countPositiveFeedbackPercentage = () => {
     return (
       Math.round((this.state.good / this.countTotalFeedback()) * 1000) / 10
     );
-  }
+  };
 
   render() {
     return (
@@ -54,24 +55,13 @@ class Feedback extends React.Component {
           onBad={this.countBad}
         />
 
-        {/* <div>
-                    <button type="button" onClick={this.countGood}>Good</button>
-                    <button type="button" onClick={this.countNeutral}>Neutral</button>
-                    <button type="button" onClick={this.countBad}>Bad</button>
-                </div> */}
-        <ul>
-          <li>Good: {this.state.good}</li>
-          <li>Neutral: {this.state.neutral}</li>
-          <li>Bad: {this.state.bad}</li>
-          <li>Total: {this.countTotalFeedback()}</li>
-          <li>
-            PositiveFeedback:{' '}
-            {Number.isNaN(this.countPositiveFeedbackPercentage())
-              ? 0
-              : this.countPositiveFeedbackPercentage()}
-            %
-          </li>
-        </ul>
+        <Statistic
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.countTotalFeedback()}
+          positivePercentage={this.countPositiveFeedbackPercentage()}
+        />
       </>
     );
   }
