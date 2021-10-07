@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import style from './Statistic.module.css';
 
 function Statistic({ good, neutral, bad, total, positivePercentage }) {
   return (
-    <ul>
+    <ul className={style.list}>
       <li>Good: {good}</li>
       <li>Neutral: {neutral}</li>
       <li>Bad: {bad}</li>
