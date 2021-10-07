@@ -9,8 +9,9 @@ function Statistic({ good, neutral, bad, total, positivePercentage }) {
       <li>Bad: {bad}</li>
       <li>Total: {total}</li>
       <li>
-        PositiveFeedback:{' '}
-        {Number.isNaN(positivePercentage) ? 0 : positivePercentage}%
+        {/* PositiveFeedback:{' '}
+        {Number.isNaN(positivePercentage) ? 0 : positivePercentage} */}
+        Positive feedback: {positivePercentage}%
       </li>
     </ul>
   );
