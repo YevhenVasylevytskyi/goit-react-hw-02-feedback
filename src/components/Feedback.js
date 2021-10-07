@@ -2,7 +2,7 @@ import React from 'react';
 import FeedbackOptions from 'components/FeedbackOptions';
 import Statistic from 'components/Statistic';
 import Section from 'components/Section';
-// import PropTypes from 'prop-types';
+import Notification from 'components/Notification';
 
 class Feedback extends React.Component {
   state = {
@@ -40,13 +40,17 @@ class Feedback extends React.Component {
         </Section>
 
         <Section title="Statistics">
-          <Statistic
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
-          />
+          {Number.isNaN(this.countPositiveFeedbackPercentage()) ? (
+            <Notification message="No feedback given"></Notification>
+          ) : (
+            <Statistic
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          )}
         </Section>
       </>
     );
